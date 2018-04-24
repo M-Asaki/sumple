@@ -1,4 +1,4 @@
-h1,h2 {
+h1,h2,h3 {
   font-weight: 100;
 }
 
@@ -128,7 +128,7 @@ form-control {
       padding-left: 20px;
     }
 
-    .img {
+    img {
       margin-top: 10px;
       margin-bottom: 20px;
       width: 100%;
@@ -138,6 +138,11 @@ form-control {
       width: 35px;
       height: 30px;
       margin-left: 20px;
+    }
+
+    .comment-author {
+      padding-right: 20px;
+      padding-left: 20px;
     }
   }
 }

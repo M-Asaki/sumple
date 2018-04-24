@@ -13,6 +13,21 @@
             <p class="topic-text">
               <%= topic.description %>
             </p>
+            <% if !topic.favorite_users.include?(current_user) %>
+              <%= link_to favorites_path(topic_id: topic.id),method: :post do %>
+                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+              <% end %>
+            <% end %>
+            <h3 class="comment-author">コメント</h3>
+            <% if !Comment.all.includes(:topic_id) %>
+              <p class="comment-text">
+                <%= comment.body %>
+              </p>
+            <% end %>
+            <%= form_for Comment.new url: topic_comments_path do |f| %>
+              <%= f.text_area :body %>
+              <%= f.submit '送信', class: 'btn btn-black btn-block' %>
+            <% end %>
           </div>
         </div>
       </div>
