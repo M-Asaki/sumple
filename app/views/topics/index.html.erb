@@ -20,11 +20,13 @@
             <% end %>
             <h3 class="comment-author">コメント</h3>
             <% if !Comment.all.includes(:topic_id) %>
-              <p class="comment-text">
-                <%= comment.body %>
-              </p>
+              <%= @comment.each do |comment| %>
+                <p class="comment-text">
+                  <%= comment.body %>
+                </p>
+              <% end %>
             <% end %>
-            <%= form_for Comment.new url: topic_comments_path do |f| %>
+            <%= form_for Comment.new, url: topic_comments_path(:topic_id) do |f| %>
               <%= f.text_area :body %>
               <%= f.submit '送信', class: 'btn btn-black btn-block' %>
             <% end %>

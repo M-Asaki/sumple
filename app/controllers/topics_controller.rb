@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   def comments
     def create
       @comment = Comment.new(:comment_params)
-      @comment.topic_id = params[:topic_id]
+      @comment.body = comment.body(:comment_params)
       if @comment.save
         redirect_to topics_path, notice: 'コメント登録しました'
       else
@@ -30,7 +30,8 @@ class TopicsController < ApplicationController
     end
 
     def index
-      @topic_comments = Comment.all.includes(:topic_id)
+      @comment = Comment.all.includes(:topic_id)
+      @topics = Topic.all.includes(:favorite_users)
     end
   end
 
